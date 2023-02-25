@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+
+{% block title %} 
+UserCreate Page
+{% endblock %}
+
+{% block content %} 
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">회원가입 SignUp</h5>
+
+    <!-- 입력폼 -->
+    <form method="post">
+    {% csrf_token %} 
+        <div class="m-3">
+            <label for="email" class="form-label">이메일</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="abc@example.com" value="{{ form.email.value|default_if_none:'' }}">
+        </div>
+        <div class="m-3">
+            <label for="password" class="form-label">비밀번호</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="*****" value="{{ form.password.value|default_if_none:'' }}">
+        </div>
+        <div class="m-3">
+            <label for="password_confirm" class="form-label">비밀번호 확인</label>
+            <input type="password" class="form-control" name="password_confirm" id="password_confirm" placeholder="*****" value="{{ form.password_confirm.value|default_if_none:'' }}">
+        </div>
+        <div class="m-3">
+            <label for="nickname" class="form-label">닉네임</label>
+            <input type="text" class="form-control" name="nickname" id="nickname" placeholder="닉네임" value="{{ form.nickname.value|default_if_none:'' }}">
+        </div>
+        <!-- {{ form.as_p }} -->
+        <div class="d-flex justify-content-center">
+            <input type="submit" class="btn btn-primary m-3" value="가입하기">
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

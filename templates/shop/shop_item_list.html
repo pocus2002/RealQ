@@ -1,0 +1,34 @@
+{% load static %}
+
+
+
+<div class="container p-5">
+
+    <!-- pagination -->
+    <div class="text-center">
+        {% for n in paginator.page_range %}
+            {% if n == page_obj.number %}
+            <a class="btn btn-dark border text-danger" href="#" role="button">{{ n }}</a>
+            {% else %} 
+            <a class="btn btn-dark border" href="?page={{ n }}" role="button">{{ n }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- item list -->
+    <div class="row">        
+        {% for object in page_obj %}
+        <div class="col-lg-4 p-1 my-3">            
+            <div class="card bg-dark p-3" style="width: 18rem;">
+                <h3 class="text-center">{{ object.name }}</h2>             
+                <!-- <img src="{% static 'img_1.jpg' %}" class="card-img-top" alt="..."> -->
+                <img src="{{ object.image.url }}" class="card-img-top" alt="...">
+                <h5 class="text-center">{{ object.price }}원</h5>
+                <div class="card-body">
+                    <p class="card-text text-white">{{ object.description }}</p>
+                </div>
+            </div>            
+        </div>
+        {% endfor %}
+    </div>
+</div>
